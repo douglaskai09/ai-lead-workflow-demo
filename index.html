@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Lead Workflow Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AI SYSTEMS PORTFOLIO</p>
+        <h1>Lead intake to approved follow-up.</h1>
+        <p class="sub">A compact demo of lead qualification, duplicate protection, human approval, and pipeline visibility.</p>
+      </div>
+      <div class="hero-card">
+        <span>Workflow</span>
+        <strong>Intake → Qualify → Review → Approve</strong>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">NEW LEAD</p>
+            <h2>Intake</h2>
+          </div>
+          <button id="sampleBtn" class="ghost" type="button">Load sample</button>
+        </div>
+
+        <form id="leadForm">
+          <label>Name<input id="name" required placeholder="Jordan Lee" /></label>
+          <label>Email<input id="email" type="email" required placeholder="jordan@example.com" /></label>
+          <label>Phone<input id="phone" placeholder="404-555-0101" /></label>
+          <label>Service
+            <select id="service">
+              <option>AI workflow automation</option>
+              <option>CRM cleanup</option>
+              <option>Lead follow-up system</option>
+              <option>Dashboard / internal tool</option>
+            </select>
+          </label>
+          <label>Budget
+            <select id="budget">
+              <option value="unknown">Not specified</option>
+              <option value="low">Under $500</option>
+              <option value="mid">$500–$2,000</option>
+              <option value="high">$2,000+</option>
+            </select>
+          </label>
+          <label>Timeline
+            <select id="timeline">
+              <option value="researching">Just researching</option>
+              <option value="month">Within a month</option>
+              <option value="week">Within a week</option>
+              <option value="urgent">ASAP</option>
+            </select>
+          </label>
+          <label class="wide">Message<textarea id="message" rows="5" placeholder="Tell us what you need..." required></textarea></label>
+          <button class="primary wide" type="submit">Analyze lead</button>
+        </form>
+        <p id="formNotice" class="notice" aria-live="polite"></p>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">AI-ASSISTED</p>
+            <h2>Qualification</h2>
+          </div>
+          <span id="priorityBadge" class="badge muted">Waiting</span>
+        </div>
+        <div id="emptyState" class="empty">Submit a lead to see scoring, reasoning, and the generated follow-up draft.</div>
+        <div id="result" hidden>
+          <div class="score-row">
+            <div>
+              <span>Lead score</span>
+              <strong id="score">0</strong>
+            </div>
+            <div>
+              <span>Category</span>
+              <strong id="category">—</strong>
+            </div>
+          </div>
+          <div class="reason-box">
+            <span>Why this score</span>
+            <ul id="reasons"></ul>
+          </div>
+          <div class="draft-box">
+            <div class="draft-head">
+              <span>Suggested follow-up</span>
+              <span id="approvalState" class="badge warning">Needs approval</span>
+            </div>
+            <p id="draft"></p>
+            <div class="actions">
+              <button id="approveBtn" class="primary" type="button">Approve follow-up</button>
+              <button id="resetBtn" class="ghost" type="button">Reset demo</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel dashboard">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">PIPELINE</p>
+          <h2>Workflow visibility</h2>
+        </div>
+        <span class="small">Stored locally in this browser for the demo</span>
+      </div>
+      <div class="metrics">
+        <div><span>Total leads</span><strong id="totalLeads">0</strong></div>
+        <div><span>High priority</span><strong id="highLeads">0</strong></div>
+        <div><span>Needs approval</span><strong id="pendingLeads">0</strong></div>
+        <div><span>Approved</span><strong id="approvedLeads">0</strong></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lead</th><th>Service</th><th>Score</th><th>Priority</th><th>Status</th></tr></thead>
+          <tbody id="leadRows"><tr><td colspan="5" class="empty-row">No leads yet.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="activity">
+        <span>Activity</span>
+        <ol id="activityLog"><li>Demo initialized.</li></ol>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
